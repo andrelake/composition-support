@@ -1,73 +1,86 @@
-# React + TypeScript + Vite
+# Composition Support Dashboard
+> **Your digital companion for breaking writer's block and simplifying music theory.**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+The **Composition Support Dashboard** is a responsive web application designed for composers, songwriters, and musicians. It acts as an instant reference tool and idea generator, effectively removing the friction between your creativity and the theoretical rules of music.
 
-Currently, two official plugins are available:
+Whether you are staring at a blank page or looking to spice up a progression, this dashboard provides the harmonic context you need—instantly.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🎵 Key Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 1. The Inspiration Roulette
+Stuck in a rut? Use our **Circle of Fifths Roulette** to gamify your starting point.
+-   **Spin to Decide:** Let the app randomly select a Root Note and Tonality (Major/Minor) for you.
+-   **Break Habits:** Forces you out of your comfort zone (e.g., C Major) into exploring new keys (e.g., F# Melodic Minor).
 
-## Expanding the ESLint configuration
+### 2. Comprehensive Harmonic Context
+Get a complete view of the harmonic possibilities, not just the basics.
+-   **Smart Harmonic Fields:** We display the chords for your **Selected Key** alongside:
+    -   **Parallel Key:** Instantly see the parallel Major/Minor for easy modulation.
+    -   **Melodic & Harmonic Minor:** Automatically calculated for the current root, perfect for borrowing chords and modal interchange.
+-   **Scale Reference:** Visual display of all notes in the scale, properly spelled with sharps and flats.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 3. Cadence Dictionary
+Don't know where to go next?
+-   **Instant Progressions:** The app calculates 3 common cadences transposed to your selected key:
+    -   **Pop:** The classic I-V-vi-IV.
+    -   **Jazz:** The essential ii-V-I.
+    -   **Classical:** The foundational I-IV-V-I.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 4. International Support
+-   Fully localized for **English**, **Portuguese (BR)**, and **Spanish**.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 📖 User Manual
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Getting Started
+1.  **Launch the App:** Open the dashboard in your browser.
+2.  **Spin the Wheel:** Click the main **Spin** button to let the Roulette pick a random key for you.
+3.  **Manual Toggle:**
+    -   Want to explore the "other side" of the same note?
+    -   Click the **"Switch to Minor"** (or Major) button on the Scale Card. This keeps the root (e.g., "D") but flips the tonality, updating all chords and scales immediately.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Understanding the Data
+-   **Harmonic Field Card:** This list shows you 4 rows of chords.
+    -   *Selected:* These are your safe, diatonic chords.
+    -   *Parallel:* Use these to borrow chords (e.g., borrowing a bVI from the minor while in a major key).
+    -   *Harmonic/Melodic:* Use these for more tension and advanced "jazzier" flavors.
+-   **Degrees:** The roman numerals (I, ii, V7) above each chord tell you the harmonic function of that chord.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+---
+
+## 💻 Development & Technical Setup
+
+This project is built with **React**, **TypeScript**, and **Vite**.
+
+### Prerequisites
+-   Node.js (v18+ recommended)
+-   npm
+
+### Installation
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/andrelake/composition-support.git
+    cd composition-support/web
+    ```
+
+2.  Install dependencies:
+    ```bash
+    npm install
+    # or
+    npm ci
+    ```
+
+3.  Run the development server:
+    ```bash
+    npm run dev
+    ```
+
+### Architecture
+-   **State Management:** `zustand` with persistence.
+-   **Styling:** `styled-components`.
+-   **I18n:** `react-i18next`.
+-   **Music Theory Engine:** Custom TypeScript engine in `lib/music-theory/engine.ts`.
