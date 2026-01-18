@@ -1,0 +1,39 @@
+{
+  "app": {
+    "title": "Composition Helper"
+  },
+  "roulette": {
+    "spin": "Spin",
+    "spinning": "Spinning..."
+  },
+  "dashboard": {
+    "harmonicField": {
+        "title": "Harmonic Field"
+    },
+    "scale": {
+        "title": "Scale Reference",
+        "notes": "Scale Notes"
+    },
+    "cadence": {
+        "title": "Common Cadences",
+        "pop": "Pop (I-V-vi-IV)",
+        "jazz": "Jazz (ii-V-I)",
+        "classical": "Classical (I-IV-V-I)"
+    },
+    "noData": "No data available"
+  },
+  "tonality": {
+    "Major": "Major",
+    "Minor": "Minor"
+  },
+  "quality": {
+    "major": "Major",
+    "minor": "Minor",
+    "diminished": "Diminished",
+    "augmented": "Augmented"
+  },
+  "settings": {
+    "language": "Language",
+    "plan": "Plan"
+  }
+}

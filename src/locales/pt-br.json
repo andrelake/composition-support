@@ -1,0 +1,29 @@
+{
+  "app": {
+    "title": "Assistente de Composição"
+  },
+  "roulette": {
+    "spin": "Girar",
+    "spinning": "Girando..."
+  },
+  "dashboard": {
+    "harmonic_fields": "Campo Harmônico",
+    "scale": "Escala de Referência",
+    "cadences": "Cadências Comuns",
+    "degrees": "Grau"
+  },
+  "tonality": {
+    "major": "Maior",
+    "minor": "Menor"
+  },
+  "quality": {
+    "major": "Maior",
+    "minor": "Menor",
+    "diminished": "Diminuta",
+    "augmented": "Aumentada"
+  },
+  "settings": {
+    "language": "Idioma",
+    "plan": "Plano"
+  }
+}
