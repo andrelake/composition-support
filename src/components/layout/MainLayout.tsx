@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import type { ReactNode } from 'react';
+import { LanguageSelector } from '../ui/LanguageSelector';
 
 // --- Styled Components ---
 
@@ -54,6 +55,12 @@ const Footer = styled.footer`
   background-color: ${({ theme }) => theme.colors.surface};
 `;
 
+const HeaderControls = styled.div`
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+`;
+
 // --- Interfaces ---
 
 /**
@@ -89,7 +96,12 @@ interface MainLayoutProps {
 export function MainLayout({ header, children, footer }: MainLayoutProps) {
   return (
     <Container>
-      {header && <Header>{header}</Header>}
+      <Header>
+        {header && <div>{header}</div>}
+        <HeaderControls>
+          <LanguageSelector />
+        </HeaderControls>
+      </Header>
       <Content>{children}</Content>
       {footer && <Footer>{footer}</Footer>}
     </Container>
