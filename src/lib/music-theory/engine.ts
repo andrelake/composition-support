@@ -34,7 +34,10 @@ export const getScale = (root: Note, tonality: Tonality): Note[] => {
   // Simple heuristic for MVP:
   const flatKeys = shouldUseFlats(root); // Broad simplification
   
-  const intervals = tonality === 'Major' ? INTERVALS.MAJOR : INTERVALS.MINOR;
+  let intervals = INTERVALS.MAJOR;
+  if (tonality === 'Minor') intervals = INTERVALS.MINOR;
+  else if (tonality === 'Harmonic Minor') intervals = INTERVALS.HARMONIC_MINOR;
+  else if (tonality === 'Melodic Minor') intervals = INTERVALS.MELODIC_MINOR;
   
   return intervals.map(interval => getNoteAtInterval(rootIdx, interval, flatKeys));
 };
@@ -65,7 +68,30 @@ export const getDiatonicChords = (scale: Note[], tonality: Tonality): Chord[] =>
     { type: 'Maj', i18n: I18N_KEYS.QUALITIES.MAJOR, degree: 'VII' }
   ];
 
-  const qualities = tonality === 'Major' ? qualitiesMajor : qualitiesMinor;
+  const qualitiesHarmonic = [
+    { type: 'min', i18n: I18N_KEYS.QUALITIES.MINOR, degree: 'i' },
+    { type: 'dim', i18n: I18N_KEYS.QUALITIES.DIMINISHED, degree: 'ii°' },
+    { type: 'aug', i18n: I18N_KEYS.QUALITIES.AUGMENTED, degree: 'III+' },
+    { type: 'min', i18n: I18N_KEYS.QUALITIES.MINOR, degree: 'iv' },
+    { type: 'Maj', i18n: I18N_KEYS.QUALITIES.MAJOR, degree: 'V' },
+    { type: 'Maj', i18n: I18N_KEYS.QUALITIES.MAJOR, degree: 'VI' },
+    { type: 'dim', i18n: I18N_KEYS.QUALITIES.DIMINISHED, degree: 'vii°' }
+  ];
+
+  const qualitiesMelodic = [
+    { type: 'min', i18n: I18N_KEYS.QUALITIES.MINOR, degree: 'i' },
+    { type: 'min', i18n: I18N_KEYS.QUALITIES.MINOR, degree: 'ii' },
+    { type: 'aug', i18n: I18N_KEYS.QUALITIES.AUGMENTED, degree: 'III+' },
+    { type: 'Maj', i18n: I18N_KEYS.QUALITIES.MAJOR, degree: 'IV' },
+    { type: 'Maj', i18n: I18N_KEYS.QUALITIES.MAJOR, degree: 'V' },
+    { type: 'dim', i18n: I18N_KEYS.QUALITIES.DIMINISHED, degree: 'vi°' },
+    { type: 'dim', i18n: I18N_KEYS.QUALITIES.DIMINISHED, degree: 'vii°' }
+  ];
+
+  let qualities = qualitiesMajor;
+  if (tonality === 'Minor') qualities = qualitiesMinor;
+  else if (tonality === 'Harmonic Minor') qualities = qualitiesHarmonic;
+  else if (tonality === 'Melodic Minor') qualities = qualitiesMelodic;
 
   return scale.map((rootNote, index) => {
     const q = qualities[index];
@@ -80,6 +106,7 @@ export const getDiatonicChords = (scale: Note[], tonality: Tonality): Chord[] =>
     let chordName = rootNote;
     if (q.type === 'min') chordName += 'm';
     if (q.type === 'dim') chordName += '°';
+    if (q.type === 'aug') chordName += '+';
     // Major usually has no suffix for triad
 
     return {

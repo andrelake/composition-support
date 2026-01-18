@@ -7,18 +7,32 @@
     "spinning": "Girando..."
   },
   "dashboard": {
+    "harmonicField": {
+      "title": "Campo Armónico",
+      "selectedKey": "Tono Seleccionado",
+      "parallelKey": "Tono Paralelo"
+    },
+    "scale": {
+      "title": "Escala de Referencia",
+      "notes": "Notas de Escala"
+    },
     "actions": {
       "switchToMinor": "Cambiar a Menor",
       "switchToMajor": "Cambiar a Mayor"
     },
-    "harmonic_fields": "Campo Armónico",
-    "scale": "Escala de Referencia",
-    "cadences": "Cadencias Comunes",
-    "degrees": "Grd."
+    "cadence": {
+        "title": "Cadencias Comunes",
+        "pop": "Pop (I-V-vi-IV)",
+        "jazz": "Jazz (ii-V-I)",
+        "classical": "Clásica (I-IV-V-I)"
+    },
+    "noData": "No hay datos disponibles"
   },
   "tonality": {
-    "major": "Mayor",
-    "minor": "Menor"
+    "Major": "Mayor",
+    "Minor": "Menor",
+    "Harmonic Minor": "Menor Armónica",
+    "Melodic Minor": "Menor Melódica"
   },
   "quality": {
     "major": "Mayor",

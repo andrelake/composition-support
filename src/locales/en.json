@@ -8,7 +8,9 @@
   },
   "dashboard": {
     "harmonicField": {
-        "title": "Harmonic Field"
+        "title": "Harmonic Field",
+        "selectedKey": "Selected Key",
+        "parallelKey": "Parallel Key"
     },
     "scale": {
         "title": "Scale Reference",
@@ -28,7 +30,9 @@
   },
   "tonality": {
     "Major": "Major",
-    "Minor": "Minor"
+    "Minor": "Minor",
+    "Harmonic Minor": "Harmonic Minor",
+    "Melodic Minor": "Melodic Minor"
   },
   "quality": {
     "major": "Major",

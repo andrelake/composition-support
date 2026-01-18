@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import type { KeyConfig, HarmonyResult, Note, Tonality } from '../lib/music-theory/types';
-import { calculateHarmony, getRandomKey } from '../lib/music-theory/engine';
+import { calculateHarmony } from '../lib/music-theory/engine';
 
 interface AppState {
   // State

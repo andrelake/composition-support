@@ -1,6 +1,6 @@
 export type Note = 'C' | 'C#' | 'Db' | 'D' | 'D#' | 'Eb' | 'E' | 'F' | 'F#' | 'Gb' | 'G' | 'G#' | 'Ab' | 'A' | 'A#' | 'Bb' | 'B';
 
-export type Tonality = 'Major' | 'Minor';
+export type Tonality = 'Major' | 'Minor' | 'Harmonic Minor' | 'Melodic Minor';
 
 export interface KeyConfig {
   root: Note;
