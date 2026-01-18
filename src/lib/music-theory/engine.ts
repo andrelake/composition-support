@@ -1,4 +1,4 @@
-import { Note, Tonality, Chord, KeyConfig, HarmonyResult } from './types';
+import type { Note, Tonality, Chord, KeyConfig, HarmonyResult } from './types';
 import { CHROMATIC_SCALE, CHROMATIC_SCALE_FLATS, CIRCLE_OF_FIFTHS, INTERVALS, CADENCES, I18N_KEYS } from './constants';
 
 /**

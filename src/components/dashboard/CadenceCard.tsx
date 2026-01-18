@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useAppStore } from '../../store/useAppStore';
 import { Card } from '../ui/Card';
-import { Title, Subtitle, MonoText } from '../ui/Typography';
+import { Title, MonoText } from '../ui/Typography';
 import { useTranslation } from 'react-i18next';
 
 const CadenceList = styled.div`

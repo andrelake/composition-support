@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { KeyConfig, HarmonyResult, Note, Tonality } from '../lib/music-theory/types';
+import type { KeyConfig, HarmonyResult, Note, Tonality } from '../lib/music-theory/types';
 import { calculateHarmony, getRandomKey } from '../lib/music-theory/engine';
 
 interface AppState {
@@ -21,7 +21,7 @@ interface AppState {
 
 export const useAppStore = create<AppState>()(
   persist(
-    (set, get) => ({
+    (set) => ({
       currentKey: { root: 'C', tonality: 'Major' },
       harmonyResult: calculateHarmony('C', 'Major'),
       isSpinning: false,

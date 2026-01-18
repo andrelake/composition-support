@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { ButtonHTMLAttributes, ReactNode } from 'react';
+import type { ButtonHTMLAttributes, ReactNode } from 'react';
 
 type ButtonVariant = 'primary' | 'secondary';
 

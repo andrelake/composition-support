@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import { animate, useMotionValue } from 'framer-motion';
 import { WheelCanvas } from './WheelCanvas';
 import { SpinButton } from './SpinButton';
 import { useAppStore } from '../../store/useAppStore';
 import { CIRCLE_OF_FIFTHS } from '../../lib/music-theory/constants';
+import type { Note } from '../../lib/music-theory/types';
 
 /**
  * RouletteContainer
@@ -54,7 +55,7 @@ const normalizeKey = (key: string): string => {
    // My SVG just renders what's in array. 
    // So I need to map incoming key to one of the array items.
    
-   if (CIRCLE_OF_FIFTHS.includes(key)) return key;
+   if (CIRCLE_OF_FIFTHS.includes(key as Note)) return key;
    return map[key] || key;
 };
 
@@ -104,7 +105,7 @@ export const RouletteContainer: React.FC = () => {
             const targetRoot = normalizeKey(targetKeyObj.root);
             
             // Find index
-            const index = CIRCLE_OF_FIFTHS.indexOf(targetRoot);
+            const index = CIRCLE_OF_FIFTHS.indexOf(targetRoot as Note);
             
             if (index !== -1) {
                 // Calculate target rotation

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Button } from '../ui/Button'; // Assuming we can use or wrap the base Button
-import { ButtonHTMLAttributes } from 'react';
+import type { ButtonHTMLAttributes } from 'react';
 
 /**
  * Props for the SpinButton.

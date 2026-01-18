@@ -1,4 +1,4 @@
-import { Note } from './types';
+import type { Note } from './types';
 
 export const CHROMATIC_SCALE: Note[] = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 // Flat equivalents for display/theory correctness (simplified for MVP, can be expanded)

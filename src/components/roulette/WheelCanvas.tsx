@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { motion, MotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
+import type { MotionValue } from 'framer-motion';
 import { CIRCLE_OF_FIFTHS } from '../../lib/music-theory/constants';
-import { Note } from '../../lib/music-theory/types';
 
 /**
  * Props for the WheelCanvas component.
@@ -46,7 +46,7 @@ const SegmentText = styled.text<{ $isActive: boolean }>`
 `;
 
 const SegmentPath = styled.path<{ $index: number; $isActive: boolean }>`
-  fill: ${({ $isActive, theme }) => $isActive ? theme.colors.primary : ($index % 2 === 0 ? '#f3f4f6' : '#ffffff')};
+  fill: ${({ $isActive, theme, $index }) => $isActive ? theme.colors.primary : ($index % 2 === 0 ? '#f3f4f6' : '#ffffff')};
   stroke: #e5e7eb;
   stroke-width: 0.5px;
   transition: fill 0.3s ease;
