@@ -7,6 +7,10 @@
     "spinning": "Girando..."
   },
   "dashboard": {
+    "actions": {
+      "switchToMinor": "Mudar para Menor",
+      "switchToMajor": "Mudar para Maior"
+    },
     "harmonic_fields": "Campo Harmônico",
     "scale": "Escala de Referência",
     "cadences": "Cadências Comuns",

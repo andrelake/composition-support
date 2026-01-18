@@ -37,17 +37,9 @@ export const useAppStore = create<AppState>()(
       setSpinning: (state) => set({ isSpinning: state }),
 
       spin: () => {
-        // Logic for spinning is often partly in UI (animation) and Logic (result).
-        // Here we just set the result instant, but UI might delay showing it.
-        // Or we can let the UI call setKey after the animation 'lands'.
-        // For simplicity/SoC: The UI calls `getRandomKey` then `setKey`.
-        // This store action might just be strictly for 'triggering' if we wanted side-effects.
-        // Let's implement a random setter here for convenience.
-        const newKey = getRandomKey();
-        set({ 
-            currentKey: newKey,
-            harmonyResult: calculateHarmony(newKey.root, newKey.tonality)
-        });
+        // Only trigger the spinning state. The UI (RouletteContainer) handles the random generation and animation,
+        // then calls setKey when completely stopped.
+        set({ isSpinning: true });
       },
       
       upgradeToPro: () => set({ userTier: 'PRO' })

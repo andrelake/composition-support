@@ -13,6 +13,8 @@ interface WheelCanvasProps {
   /** The currently selected key root note to highlight. */
   currentKey?: string;
   className?: string;
+  /** Callback when a segment is clicked */
+  onSegmentClick?: (note: string) => void;
 }
 
 const WheelContainer = styled.div`
@@ -38,7 +40,7 @@ const SVGContainer = styled(motion.svg)`
 const SegmentText = styled.text<{ $isActive: boolean }>`
   font-size: 8px;
   font-weight: 700;
-  fill: ${({ $isActive, theme }) => $isActive ? '#ffffff' : theme.colors.text || '#333'};
+  fill: ${({ $isActive }) => $isActive ? '#ffffff' : '#333333'};
   text-anchor: middle;
   dominant-baseline: middle;
   pointer-events: none;
@@ -46,10 +48,16 @@ const SegmentText = styled.text<{ $isActive: boolean }>`
 `;
 
 const SegmentPath = styled.path<{ $index: number; $isActive: boolean }>`
-  fill: ${({ $isActive, theme, $index }) => $isActive ? theme.colors.primary : ($index % 2 === 0 ? '#f3f4f6' : '#ffffff')};
+  fill: ${({ $isActive, theme, $index }) => $isActive ? (theme?.colors?.primary || '#8257e6') : ($index % 2 === 0 ? '#f3f4f6' : '#ffffff')};
   stroke: #e5e7eb;
   stroke-width: 0.5px;
   transition: fill 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.9;
+    filter: brightness(0.95);
+  }
 `;
 
 /**
@@ -100,11 +108,7 @@ const getTextCoordinates = (index: number, totalSegments: number, radius: number
   return { x, y, rotation: angle };
 };
 
-/**
- * WheelCanvas component logic
- * Renders the Circle of Fifths visual.
- */
-export const WheelCanvas: React.FC<WheelCanvasProps> = ({ rotation, currentKey, className }) => {
+export const WheelCanvas: React.FC<WheelCanvasProps> = ({ rotation, currentKey, className, onSegmentClick }) => {
   const radius = 50;
   const center = 50;
   const total = CIRCLE_OF_FIFTHS.length;
@@ -127,7 +131,7 @@ export const WheelCanvas: React.FC<WheelCanvasProps> = ({ rotation, currentKey, 
             const textPos = getTextCoordinates(index, total, radius, center);
             
             return (
-                <g key={note}>
+                <g key={note} onClick={() => onSegmentClick?.(note)}>
                     <SegmentPath 
                         d={pathData} 
                         $index={index} 

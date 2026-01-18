@@ -1,8 +1,16 @@
 import styled from 'styled-components';
 import { useAppStore } from '../../store/useAppStore';
 import { Card } from '../ui/Card';
+import { Button } from '../ui/Button';
 import { Title, Subtitle, MonoText } from '../ui/Typography';
 import { useTranslation } from 'react-i18next';
+
+const HeaderRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+`;
 
 const ScaleContainer = styled.div`
   display: flex;
@@ -31,8 +39,13 @@ const NoteBadge = styled.div<{ $isRoot?: boolean }>`
  * Ref: Task #4, Component 1
  */
 export function ScaleRefCard() {
-  const { currentKey, harmonyResult } = useAppStore();
+  const { currentKey, harmonyResult, setKey } = useAppStore();
   const { t } = useTranslation();
+
+  const toggleTonality = () => {
+    const newTonality = currentKey.tonality === 'Major' ? 'Minor' : 'Major';
+    setKey(currentKey.root, newTonality);
+  };
 
   // If harmonyResult is available, use it (it should be always synced with currentKey)
   const scaleNotes = harmonyResult.scale;
@@ -49,7 +62,14 @@ export function ScaleRefCard() {
 
   return (
     <Card>
-      <Title as="h3">{currentKey.root} {t(`tonality.${currentKey.tonality}`, currentKey.tonality)}</Title>
+      <HeaderRow>
+        <Title as="h3">{currentKey.root} {t(`tonality.${currentKey.tonality}`, currentKey.tonality)}</Title>
+        <Button variant="secondary" onClick={toggleTonality}>
+          {currentKey.tonality === 'Major' 
+            ? t('dashboard.actions.switchToMinor', 'Switch to Minor') 
+            : t('dashboard.actions.switchToMajor', 'Switch to Major')}
+        </Button>
+      </HeaderRow>
       <Subtitle>{t('dashboard.scale.notes', 'Scale Notes')}</Subtitle>
       
       <ScaleContainer>
