@@ -51,6 +51,41 @@ Don't know where to go next?
 
 ---
 
+## 🎵 Non-Developer User Guide
+
+If you are a musician or teacher and want to run this application on your computer, follow these simple steps. You do not need to know programming.
+
+### 1. Prerequisites (Do this once)
+
+This application requires **Node.js** to run.
+1.  Go to [nodejs.org](https://nodejs.org/).
+2.  Download the **LTS (Long Term Support)** version for Windows.
+3.  Install it (just click "Next", "Next", "Finish").
+
+### 2. Download the App
+
+1.  Click the **Green "Code" button** on the GitHub page.
+2.  Select **Download ZIP**.
+3.  Extract (Unzip) the folder to somewhere on your computer (like your Documents folder).
+
+### 3. Run the App
+
+1.  Open the folder you just extracted.
+2.  Go inside the `web` folder.
+3.  Double-click the file named **`start_app.bat`**.
+    *   *Note: On some computers it might just show as `start_app`.*
+
+A black window will appear.
+-   **First time:** It will take a minute to download the necessary pieces (you will see text scrolling).
+-   **Next times:** It will start almost instantly.
+
+Once ready, your web browser (Chrome, Edge, etc.) will automatically open with the application.
+
+### Important Note
+**Do not close the black window** while using the app. That window is the "engine" keeping the app running. When you are done, simply close the browser and the black window.
+
+---
+
 ## 💻 Development & Technical Setup
 
 This project is built with **React**, **TypeScript**, and **Vite**.
