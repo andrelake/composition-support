@@ -22,17 +22,20 @@ const getNoteAtInterval = (rootIndex: number, semitones: number, useFlats: boole
 
 /**
  * Determins if we should utilize flats based on the root note
- * Heuristic: F, Bb, Eb, Ab, Db, Gb use flats. Others sharps.
+ * Major: F, Bb, Eb, Ab, Db, Gb, Cb use flats.
+ * Minor: D, G, C, F, Bb, Eb, Ab use flats.
  */
-const shouldUseFlats = (root: Note): boolean => {
+const shouldUseFlats = (root: Note, tonality: Tonality = 'Major'): boolean => {
+    if (tonality.includes('Minor')) {
+        return ['D', 'G', 'C', 'F', 'Bb', 'Eb', 'Ab'].includes(root);
+    }
     return ['F', 'Bb', 'Eb', 'Ab', 'Db', 'Gb', 'Cb'].includes(root);
 };
 
 export const getScale = (root: Note, tonality: Tonality): Note[] => {
   const rootIdx = getNoteIndex(root);
-  // Default Minor to flats if C minor or "flatter"? For now, stick to major logic + minor relative.
-  // Simple heuristic for MVP:
-  const flatKeys = shouldUseFlats(root); // Broad simplification
+  
+  const flatKeys = shouldUseFlats(root, tonality);
   
   let intervals = INTERVALS.MAJOR;
   if (tonality === 'Minor') intervals = INTERVALS.MINOR;
