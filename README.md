@@ -71,8 +71,7 @@ This application requires **Node.js** to run.
 ### 3. Run the App
 
 1.  Open the folder you just extracted.
-2.  Go inside the `web` folder.
-3.  Double-click the file named **`start_app.bat`**.
+2.  Double-click the file named **`start_app.bat`**.
     *   *Note: On some computers it might just show as `start_app`.*
 
 A black window will appear.
